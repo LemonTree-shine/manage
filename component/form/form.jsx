@@ -7,7 +7,6 @@ export default class Form extends Component{
 	render(){
         return (<form 
             className={this.props.className?"c-form-h "+this.props.className:"c-form-h"} 
-            onSubmit={()=>{this.props.onSubmit(event,this.state.value)}}
             onSubmit={this.handleSubmit}
             onChange={this.handleChange}
             ref="form"

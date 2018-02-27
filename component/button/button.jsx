@@ -8,6 +8,7 @@ export default class Button extends Component{
         return (<button 
             className={this.props.className?"c-button "+this.props.className:"c-button"} 
             onClick={this.props.onClick}
+            onSubmit={this.props.onSubmit}
             disabled={this.props.disabled?this.props.disabled:""}
             >
             {this.props.children}
