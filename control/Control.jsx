@@ -11,6 +11,7 @@ import {menu as getMenuDate} from "../mock/menu.js";
 import Index from "../page/index.jsx";
 import ButtonPage from "../page/buttonPage.jsx";
 import FormPage from "../page/formPage.jsx";
+import DlogPage from "../page/dlogPage.jsx";
 
 class Main extends Component{
 	render(){
@@ -53,6 +54,7 @@ export default class Control extends Component{
 					<Route exact path="/" component={Index}></Route>
                     <Route exact path="/button" component={ButtonPage}></Route>
                     <Route exact path="/form" component={FormPage}></Route>
+                    <Route exact path="/dlog" component={DlogPage}></Route>
 				</Main>
 			</HashRouter>
 		);

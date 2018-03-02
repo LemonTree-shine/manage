@@ -12,9 +12,8 @@ export default class ButtonPage extends Component{
 			<Button className="c-button-warning c-space">警告</Button>
 			<Button className="c-button-danger c-space">危险</Button>
 			<Button className="c-button-danger c-space" disabled="disabled">禁用</Button>
+			<Button className="c-button-primary c-button-small c-space">小尺寸</Button>
+			<Button className="c-button-primary c-button-large c-space">大尺寸</Button>
 		</div>)
-	}
-	handleClick = (value)=>{
-		alert(value);
 	}
 }

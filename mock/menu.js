@@ -5,8 +5,8 @@ export var menu = [{
     name:"form表单",
     link:"/form"
 },{
-    name:"菜单3",
-    link:"/bb"
+    name:"弹窗",
+    link:"/dlog"
 },{
     name:"菜单4",
     link:"/cc"
