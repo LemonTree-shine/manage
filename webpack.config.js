@@ -11,9 +11,35 @@ require("babel-core").transform("code", {
   plugins: ["transform-class-properties"]
 });
 
-console.log(process.argv);
+console.log(process.env.NODE_ENV);
 
-module.exports = {
+let PLUGIN = [
+	new webpack.HotModuleReplacementPlugin(),
+	new webpack.NoEmitOnErrorsPlugin(),
+	new HtmlWebpackPlugin({
+		title: 'demo',
+		template: 'index.html', // 模板路径
+		filename:"index.html"
+	}),
+	new CopyWebpackPlugin([{
+		from:__dirname + '/assets',
+		to:__dirname+"/build/assets"
+	}])
+];
+
+let configs = {};
+
+if(process.env.NODE_ENV === "production"){
+	PLUGIN = [...PLUGIN,new webpack.optimize.UglifyJsPlugin({
+		compress: {
+			warnings: false
+		}
+	})];	
+}else{
+	configs.devtool = 'source-map';
+}
+
+configs = {
 	entry:{index:['./src/index.js']},
 	output:{
 		path:__dirname+"/build",
@@ -33,31 +59,37 @@ module.exports = {
 			loader:"vue-loader"
 		},
 		{
+			test: /\.(png|jpg|gif)$/,
+			loader: 'url-loader?limit=8192&name=assets/images/[name].[ext]'
+		},
+		{
+			test: /\.(eot|woff|svg)/,
+			loader: 'url-loader?limit=8192&name=assets/icon/[name].[ext]'
+		},
+		{
 			test: /\.js$|\.jsx$/,
 			loader: 'babel-loader',
 			exclude: /node_modules/,
 			query: {
-					presets: ['es2015','react','stage-0']
+				presets: ['es2015','react','stage-0']
 			}
 		}]
 	},
-	plugins: [
-	  new webpack.HotModuleReplacementPlugin(),
-		new webpack.NoEmitOnErrorsPlugin(),
-		new HtmlWebpackPlugin({
-			title: 'demo',
-			template: 'index.html', // 模板路径
-			filename:"index.html"
-		}),
-		new CopyWebpackPlugin([{
-			from:__dirname + '/assets',
-			to:__dirname+"/build/assets"
-		}]),
-	],
+	plugins: PLUGIN,
 	resolve: {
 	  extensions: ['.vue','.js','.jsx', '.json', ' '],
 	}
 }
+
+if(process.env.NODE_ENV === "production"){
+
+}else{
+	configs.devtool = 'source-map';
+}
+
+
+
+module.exports = configs;
 
 
 

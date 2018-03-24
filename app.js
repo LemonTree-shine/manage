@@ -11,7 +11,9 @@ var app = express();
 
 var compiler = webpack(webpackBaseConfig);
 
-console.log(compiler.options.entry.index);
+//console.log(compiler.options.entry.index);
+
+console.log(process.env.NODE_ENV);
 
 compiler.options.entry.index.push('webpack-hot-middleware/client?path=/__webpack_hmr&timeout=10000&reload=true')
 app.use(webpackDevMiddleware(compiler, {

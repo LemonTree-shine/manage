@@ -12,6 +12,9 @@ export default class Dlog extends Component{
             }}>
                 {this.dlogHead()}
                 <div className="c-dlog-content">
+                    {this.icon=="warning"?<div className={this.icon+" c-icon"}>&#xe654;</div>:""}
+                    {this.icon=="success"?<div className={this.icon+" c-icon"}>&#xe653;</div>:""}
+                    {this.icon=="error"?<div className={this.icon+" c-icon"}>&#xe655;</div>:""}
                     {this.content}
                 </div>
                 {this.dlogFoot()}
@@ -42,6 +45,11 @@ export default class Dlog extends Component{
      * 弹窗的默认内容
      */
     content = "默认内容";
+
+    /**
+     * 弹窗提示图标
+     */
+    icon = "";
 
 
     /**
@@ -92,10 +100,11 @@ export default class Dlog extends Component{
     /**
      * 默认的静态方法
      */
-    static show(title,content,success){
+    static show(title,content,icon,success){
         var r = new Dlog();
         r.title = title?title:r.title;
         r.content = content?content:r.content;
+        r.icon = icon?icon:r.icon;
         if(success){
             r.handleOk = ()=>{
                 let falg = success();

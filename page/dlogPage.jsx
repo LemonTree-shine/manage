@@ -14,7 +14,7 @@ export default class DlogPage extends Component{
         </div>)
 	}
 	handleClick = ()=>{
-		Dlog.show("温馨提示","调用静态方法",()=>{
+		Dlog.show("温馨提示","调用静态方法","success",()=>{
 			alert(123123);
 			return false;
 		});

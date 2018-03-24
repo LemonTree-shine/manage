@@ -7,7 +7,12 @@ export var menu = [{
 },{
     name:"弹窗",
     link:"/dlog"
-},{
-    name:"菜单4",
-    link:"/cc"
+}
+// ,{
+//     name:"select下拉",
+//     link:"/select"
+// }
+,{
+    name:"提示组件",
+    link:"/toast"
 }];
