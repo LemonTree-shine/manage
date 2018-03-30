@@ -14,6 +14,7 @@ import FormPage from "../page/formPage.jsx";
 import DlogPage from "../page/dlogPage.jsx";
 import SelectPage from "../page/selectPage.jsx";
 import ToastPage from "../page/toastPage.jsx";
+import RadioPage from "../page/RadioPage.jsx";
 
 class Main extends Component{
 	render(){
@@ -59,6 +60,7 @@ export default class Control extends Component{
                     <Route exact path="/dlog" component={DlogPage}></Route>
                     <Route exact path="/select" component={SelectPage}></Route>
                     <Route exact path="/toast" component={ToastPage}></Route>
+                    <Route exact path="/radio" component={RadioPage}></Route>
 				</Main>
 			</HashRouter>
 		);

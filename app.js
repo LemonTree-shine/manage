@@ -1,5 +1,6 @@
 var webpack = require('webpack');
 var webpackBaseConfig = require('./webpack.config.js');
+var cp = require('child_process');
 
 var webpackDevMiddleware = require('webpack-dev-middleware');
 var webpackHotMiddleware = require('webpack-hot-middleware');
@@ -34,6 +35,13 @@ reload(server, app);
 server.listen(3100, function(){
     console.log('App (dev) is now running on port 3100!');
 });
+
+if(process.platform=="win32"){
+    cp.exec('start http://localhost:3100');
+}else{
+    cp.exec('open http://localhost:3100');
+}
+
 
 
 

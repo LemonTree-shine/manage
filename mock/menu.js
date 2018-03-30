@@ -15,4 +15,8 @@ export var menu = [{
 ,{
     name:"提示组件",
     link:"/toast"
+}
+,{
+    name:"radio按钮",
+    link:"/radio"
 }];
