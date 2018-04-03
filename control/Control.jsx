@@ -16,6 +16,7 @@ import SelectPage from "../page/selectPage.jsx";
 import ToastPage from "../page/toastPage.jsx";
 import RadioPage from "../page/RadioPage.jsx";
 import CheckBoxPage from "../page/CheckBoxPage.jsx";
+import PaginatorPage from "../page/PaginatorPage.jsx";
 
 class Main extends Component{
 	render(){
@@ -38,6 +39,8 @@ class Main extends Component{
                     <Route exact path="/toast" component={ToastPage}></Route>
                     <Route exact path="/radio" component={RadioPage}></Route>
                     <Route exact path="/checkBox" component={CheckBoxPage}></Route>
+                    <Route exact path="/paginator" component={PaginatorPage}></Route>
+                    
 			</div>
 		</div>);
     }

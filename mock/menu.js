@@ -23,4 +23,9 @@ export var menu = [{
 ,{
     name:"checkbox按钮",
     link:"/checkBox"
-}];
+},
+,{
+    name:"分页组件",
+    link:"/paginator"
+}
+];
