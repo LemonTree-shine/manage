@@ -15,6 +15,7 @@ import DlogPage from "../page/dlogPage.jsx";
 import SelectPage from "../page/selectPage.jsx";
 import ToastPage from "../page/toastPage.jsx";
 import RadioPage from "../page/RadioPage.jsx";
+import CheckBoxPage from "../page/CheckBoxPage.jsx";
 
 class Main extends Component{
 	render(){
@@ -29,7 +30,14 @@ class Main extends Component{
                 })}
 			</div>
 			<div className="c-contain">
-				{this.props.children}
+                    <Route exact path="/" component={Index}></Route>
+                    <Route exact path="/button" component={ButtonPage}></Route>
+                    <Route exact path="/form" component={FormPage}></Route>
+                    <Route exact path="/dlog" component={DlogPage}></Route>
+                    <Route exact path="/select" component={SelectPage}></Route>
+                    <Route exact path="/toast" component={ToastPage}></Route>
+                    <Route exact path="/radio" component={RadioPage}></Route>
+                    <Route exact path="/checkBox" component={CheckBoxPage}></Route>
 			</div>
 		</div>);
     }
@@ -53,15 +61,7 @@ export default class Control extends Component{
 	render(){
 		return (
 			<HashRouter>
-				<Main nemu={this.state.menuData}>
-					<Route exact path="/" component={Index}></Route>
-                    <Route exact path="/button" component={ButtonPage}></Route>
-                    <Route exact path="/form" component={FormPage}></Route>
-                    <Route exact path="/dlog" component={DlogPage}></Route>
-                    <Route exact path="/select" component={SelectPage}></Route>
-                    <Route exact path="/toast" component={ToastPage}></Route>
-                    <Route exact path="/radio" component={RadioPage}></Route>
-				</Main>
+				<Main nemu={this.state.menuData}/>	
 			</HashRouter>
 		);
     }

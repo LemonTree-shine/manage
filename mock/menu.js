@@ -19,4 +19,8 @@ export var menu = [{
 ,{
     name:"radio按钮",
     link:"/radio"
+}
+,{
+    name:"checkbox按钮",
+    link:"/checkBox"
 }];

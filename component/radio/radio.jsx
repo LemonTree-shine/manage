@@ -7,20 +7,27 @@ export default class Radio extends Component{
     render(){
         return (<div className="c-radioBox">
             <input ref="thisRadio" value={this.props.value} className="c-radio" type="radio" name={this.props.name} onChange={(e)=>this.handleChange(e)}/>
-            <div className={this.props.value == this.props.currentValue?"c-radioCss c-radioCss-active":"c-radioCss"}></div>
+            <div className={this.state.checked?"c-radioCss c-radioCss-active":"c-radioCss"}></div>
         </div>)
     }
     constructor(){
         super();
         this.state = {
-            Css:""
+            checked:false
         }
     }
     handleChange = (e)=>{
-        this.props.propsFunction(e.target.value);
+        this.props.propsFunction(e.target);
     }
     componentDidMount(){
-        console.log(this);
+        //console.log(this);
+    }
+
+    componentWillReceiveProps(nextProps){
+        //console.log(this.refs.thisRadio.checked);
+        this.setState({
+            checked:this.refs.thisRadio.checked
+        });
     }
     
 }
@@ -50,13 +57,18 @@ export class GroupRadio extends Component{
         this.state = {currentValue:""}
     }
     currentValue = "";
+    value = {};
     propsFunction = (e)=>{
         //debugger;
         var a = new Date().getTime();
         this.setState({
-            currentValue:e
+            currentValue:e.value
         });
-        this.currentValue = e;
+        this.currentValue = e.value;
+
+        this.value[e.name] = e.value;
+
         console.log(this);
+        console.log(e.name);
     }
 }
