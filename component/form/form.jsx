@@ -90,7 +90,7 @@ export default class Form extends Component{
                 }
             }
         });
-        debugger;
+        //debugger;
         let formData = {};
         this.refs.form.querySelectorAll("input[type=text]").forEach(input=>{
             if(input.name&&input.value){
@@ -113,7 +113,7 @@ export default class Form extends Component{
     }
     handleChange = ()=>{
         //console.log(this.refs.form.querySelectorAll("input[type=text]"));
-        debugger;
+        //debugger;
         let formData = {};
         this.refs.form.querySelectorAll("input[type=text]").forEach(input=>{
             if(input.name&&input.value){
@@ -199,7 +199,7 @@ export class Input extends Component{
                     this.refs.input.parentNode.appendChild(odiv);  
                 } 
             }else{
-                debugger;
+                //debugger;
                 console.log(typeof this.refs.input.dataset.pattern);
                 if(this.refs.input.dataset.pattern){
                     if(eval(this.refs.input.dataset.pattern).test(this.refs.input.value)){

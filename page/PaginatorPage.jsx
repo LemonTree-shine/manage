@@ -12,7 +12,7 @@ export default class PaginatorPage extends Component{
     constructor(){
         super();
         this.state = {
-            total:300
+            total:30000
         }
     }
     componentDidMount(){

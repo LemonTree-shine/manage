@@ -20,7 +20,7 @@ export default class DatePick extends Component{
     }
 
     componentDidMount(){
-        laydate.path = window.location.origin+"/assets/laydate/";
+        laydate.path = window.location.origin+"/build/assets/laydate/";
         var data = {};
 
         //日期格式化
@@ -41,7 +41,7 @@ export default class DatePick extends Component{
         }
         laydate.render({
             elem: this.refs.getDate,//指定元素
-            theme: this.props.theme||'default',
+            theme: this.props.theme||'#208fee',
             min: this.props.min||'1900-1-1',
             max: this.props.max||'2099-12-31',
             mark: this.props.mark||{},

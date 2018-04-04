@@ -39,12 +39,20 @@
     margin:0;
     text-decoration: none;
 }
+a{
+    color:#208eee;
+    cursor: pointer;
+}
 ul{
     list-style-type: none;
 }
 
 .c-right{
     float: right;
+}
+
+.c-mb10{
+    margin-bottom:10px;
 }
 
 .clearfix:after{
@@ -102,4 +110,87 @@ ul{
 .c-nav-link.active{
     color:@main-color;
     background: #e4e1e1;
+}
+
+.c-title-nav{
+    display: inline-block;
+    font-size: 14px;
+    width: 165px;
+    height: 32px;
+    line-height: 30px;
+    text-indent: 10px;
+    color: #696565;
+    background: #e0efff;
+    margin-right: 5px;
+    transform: translateY(2px);
+    border-bottom: 2px solid #ccc;
+    position: relative;
+    .nav-close{
+        position: absolute;
+        top: 5px;
+        right: 7px;
+        width: 20px;
+        height: 20px;
+        font-size: 16px;
+        line-height: 20px;
+        text-align: center;
+    }
+}
+
+.c-title-nav.active{
+    color: #3697fb;
+    border-bottom: 2px solid #3697fb;
+}
+
+.c-control-nav{
+    width: 100;
+    border-bottom:2px solid #ccc;
+    margin: 0px 0 15px 0;
+}
+
+//form表单布局
+.c-form-field{
+    display: inline-block;
+    margin-bottom: 10px;
+    margin-right: 7px;
+    .c-form-label{
+        width: 100px;
+        text-align: right;
+        display: inline-block;
+        font-size: 14px;
+        color: #6f6c6c;
+    }
+}
+
+//表格样式
+.c-table-box{
+    table{
+        width: 100%;
+        border-collapse:collapse;
+        border-top:1px solid #ccc;
+        border-left:1px solid #ccc;
+        text-align: left;
+        thead{
+            font-size: 14px;
+            background: #daebfd;
+            th{
+                font-weight: 500;
+                padding: 8px;
+                border-right:1px solid #ccc;
+                border-bottom:1px solid #ccc;
+            }
+        }
+        tbody{
+            td{
+                padding: 8px;
+                border-right:1px solid #ccc;
+                border-bottom:1px solid #ccc;
+                color:#8c8989;
+                font-size: 14px;
+            }
+        }
+        .table-empty{
+            text-align: center;
+        }
+    }
 }
