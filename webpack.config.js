@@ -4,6 +4,7 @@ var fs = require('fs');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 var CopyWebpackPlugin = require('copy-webpack-plugin');
+var CleanWebpackPlugin = require('clean-webpack-plugin');
 
 
 var entre = {};
@@ -17,13 +18,17 @@ let PLUGIN = [
 	new webpack.HotModuleReplacementPlugin(),
 	new webpack.NoEmitOnErrorsPlugin(),
 	new HtmlWebpackPlugin({
-		title: 'demo',
 		template: 'index.html', // 模板路径
-		filename:"index.html"
+		filename:"index.html",
+		hash:true,
+		excludeChunks:["common"]
 	}),
 	new CopyWebpackPlugin([{
+		from:__dirname + '/sdk',
+		to:__dirname+"/dist/sdk"
+	},{
 		from:__dirname + '/assets',
-		to:__dirname+"/build/assets"
+		to:__dirname+"/dist/assets"
 	}])
 ];
 
@@ -34,16 +39,20 @@ if(process.env.NODE_ENV === "production"){
 		compress: {
 			warnings: false
 		}
-	})];	
+	}),new CleanWebpackPlugin(['dist'])];	
 }else{
 	configs.devtool = 'source-map';
 }
 
 configs = {
-	entry:{index:['./src/index.js']},
+	entry:{
+		index:['./src/index.js'],
+		common:['./sdk/common.js'],
+			
+	},
 	output:{
-		path:__dirname+"/build",
-		filename:"js/[name].[hash].js"
+		path:__dirname+"/dist",
+		filename:"js/[name].js"
 	},
 	module:{
 		rules:[{
@@ -59,25 +68,38 @@ configs = {
 			loader:"vue-loader"
 		},
 		{
-			test: /\.(png|jpg|gif)$/,
-			loader: 'url-loader?limit=8192&name=assets/images/[name].[ext]'
-		},
-		{
-			test: /\.(eot|woff|svg)/,
-			loader: 'url-loader?limit=8192&name=assets/icon/[name].[ext]'
+			test: /\.(png|jpg|gif|jpeg|svg)$/,
+			loader: 'url-loader?limit=8192&name=[path][name].[ext]'
 		},
 		{
 			test: /\.js$|\.jsx$/,
 			loader: 'babel-loader',
 			exclude: /node_modules/,
 			query: {
-				presets: ['es2015','react','stage-0']
+				presets: ['react','env','stage-0'],
+				plugins: [
+					['import', {"libraryName": "antd", "style": "css"}],
+					[
+						"transform-runtime",
+						{
+						  "helpers": false,
+						  "polyfill": false,
+						  "regenerator": true,
+						  "moduleName": "babel-runtime"
+						}
+					  ]
+				]
 			}
 		}]
 	},
 	plugins: PLUGIN,
 	resolve: {
-	  extensions: ['.vue','.js','.jsx', '.json', ' '],
+	  extensions: ['.vue','.js','.jsx', '.json', '.ts','.tsx'],
+	  alias: {
+		page: path.resolve(__dirname, 'page/'),
+		common:path.resolve(__dirname,"common/"),
+		component:path.resolve(__dirname, 'component/'),
+	  }
 	}
 }
 

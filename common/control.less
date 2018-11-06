@@ -1,0 +1,169 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+ul{
+    list-style-type: none;
+}
+
+a{
+    text-decoration: none;
+    color:#ffffff;
+}
+
+@main-color:#13a9fb;
+
+.c-nav-head{
+    width: 100%;
+    height: 42px;
+    background: @main-color;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10000;
+    .logo-text{
+        line-height: 42px;
+        float: left;
+        color: #ffffff;
+        font-size: 16px;
+        text-align: right;
+        width: 180px;
+        position: relative;
+        .logo{
+            position: absolute;
+            top:10px;
+            font-size: 20px;
+            left: 55px;
+        }
+    }
+    .login-user-info{
+        line-height: 42px;
+        float: right;
+        color: #ffffff;
+        font-size: 16px;
+        .login-out{
+            display: inline-block;
+            line-height: 42px;
+            padding: 0 15px;
+            background: #4dc4ff;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+    }
+}
+
+.c-nav-menu{
+    position: fixed;
+    height: 100%;
+    width: 240px;
+    background: #f7f6f6;
+    top:0;
+    left: 0;
+    padding-top: 42px;
+    box-sizing: border-box;
+    z-index: 999;
+    box-shadow: 0 0 15px #e4e4e4;
+    overflow-y: scroll;
+    a:hover{
+        background: #eefaff;
+    }
+    .c-nav-ul a{
+        text-indent: 40px;
+    }
+    .c-nav-ul ul a{
+        text-indent: 60px;
+    }
+    .c-nav-ul ul ul a{
+        text-indent: 80px;
+    }
+    .c-nav-ul ul ul ul a{
+        text-indent: 100px;
+    }
+    .c-nav-ul ul ul ul ul a{
+        text-indent: 120px;
+    }
+
+    .c-nav-ul{
+        li{
+            line-height: 40px;
+            font-size: 14px;
+            background: #ffffff;
+            color: #666;
+            overflow:hidden;
+            text-overflow:ellipsis;
+            white-space:nowrap;
+            // padding-right: 20px;
+            position: relative;
+            a{
+                width: 100%;
+                height: 100%;
+                display: block;
+                color: #666;
+                overflow:hidden;
+                text-overflow:ellipsis;
+                white-space:nowrap;
+                padding-right: 20px;
+                box-sizing: border-box;
+            }
+            .current{
+                background: #00aaff;
+                color: #ffffff !important;
+                .nav-icon{
+                    color:#ffffff;
+                }
+            }
+            .chevron-right{
+                position: absolute;
+                display: block;
+                text-indent:0;
+                top: 14px;
+                right: 14px;
+                transition: transform .2s;
+            }
+            .nav-icon{
+                position: absolute;
+                display: block;
+                text-indent: 0;
+                top: 13px;
+                left: 14px;
+                line-height: 13px;
+            }
+            
+            
+        }
+        //展开的样式
+        .c-navmenu-expanded>.chevron-right{
+            transform: rotate(90deg);
+            transition: transform .2s;
+        }
+        .c-navmenu-collapsable{
+            a{
+                color:#666;
+            }
+        }
+        .c-navmenu-selected{
+            color:@main-color; 
+        }
+        .c-navmenu-selected>a{
+            color:@main-color; 
+        }
+        
+        .c-navmenu-collapsable>ul{
+            display: none;
+        }
+        .c-navmenu-expanded>ul{
+            display: block;
+        }
+        
+    }
+}
+.c-content{
+    position: fixed;
+    height: 100%;
+    box-sizing: border-box;
+    padding-top: 52px;
+    padding-left: 250px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    width: 100%;
+}
