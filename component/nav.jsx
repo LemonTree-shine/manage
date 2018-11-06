@@ -120,7 +120,7 @@ export default class Nav extends Component {
                     elem.children[1].style.display = "none";
                     //清除过渡中的class
                     elem.className = elem.className.replace(/ c-navmenu-collapsing/, "");
-                }, 210)
+                }, 220)
             }, 0);
         } else {
             elem.children[1].style.display = "block";
@@ -135,7 +135,7 @@ export default class Nav extends Component {
                     elem.children[1].style = "";
                     //清除过渡中的class
                     elem.className = elem.className.replace(/ c-navmenu-collapsing/, "");
-                }, 210)
+                }, 220)
             }, 0);
         }
     }
