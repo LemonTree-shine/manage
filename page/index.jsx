@@ -1,45 +1,86 @@
 import React,{Component,ReactDOM,createContext} from "react";
 import reactDOM,{render} from "react-dom";
-
-var ContextTheme = createContext({},(pre,next)=>{
-    console.log(pre,next,i++);
-    return i;
-});
-
-console.log(ContextTheme);
+import PropTypes from 'prop-types';
 
 export default class Index extends Component{
     render(){
-        return <ContextTheme.Provider value={this.state}>
-            <Header/>
-        </ContextTheme.Provider>
-    }
-    state = {};
-    componentDidMount(){  
-
-    }
-}
-
-class Header extends Component{
-    render(){
         return <div>
-            <Son/>
+            <ProviderCom>
+                <div>asdasd</div>
+                <AAA/>
+            </ProviderCom>
         </div>
     }
 }
 
-class Son extends Component{
+var obj = {
+    color:"red"
+}
+
+var ContextTheme = createContext({});
+
+class ProviderCom extends Component{
     render(){
-        /**
-             * 上面说到的第二个属性Consumer就在这里用到啦！
-             * 其实ContextTheme的Consumer属性也是一个react组件，如果说Provider是传context值的，那么Consumer就可以取到context值啦！
-             * 要注意的一点就是，Consumer组件是通过render prop模式传值的，它的children是一个方法，参数就是context，返回的值即为render的值
-             * 在返回值中写组件就好了，context也能拿到；
-            */
-        return <ContextTheme.Consumer>
-            {context=>{
-                return <div style={{"color":context.color}}>hello world</div>
-            }}
-        </ContextTheme.Consumer>
+        return <ContextTheme.Provider value={this.state}>
+            {this.props.children}
+        </ContextTheme.Provider>
+    }
+    state = {
+        ...obj,
+        dispatch:(a)=>{
+            this.setState(a)
+        }
+    };
+
+}
+
+
+class Test extends Component{
+    render(){
+        return <div>
+            <div style={{color:this.props.procide.color}}>chenze</div>
+            <CCC/>
+        </div>
+    }
+    componentDidMount(){
+        setTimeout(()=>{
+            this.props.procide.dispatch({color:"blue"});
+        },1000)
+        
+        console.log(this)
     }
 }
+
+
+class C extends Component{
+    render(){
+        return <div>123</div>
+    }
+    componentDidMount(){
+        setTimeout(()=>{
+            this.props.procide.dispatch({color:"orange"});
+        },2000)
+    }
+}
+
+var AAA = higrCom(Test);
+
+var CCC = higrCom(C);
+
+//用高阶组件处理contex传值问题
+function higrCom(Com){
+    return class extends Component{
+        render(){
+            return <ContextTheme.Consumer>
+                {value=>{
+                    return <Com procide={value}/>
+                }}
+            </ContextTheme.Consumer>
+        }
+    }
+}
+
+
+
+
+
