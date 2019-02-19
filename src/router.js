@@ -1,1 +1,1 @@
-export var router = ["/Users/zechen/Desktop/manage/page/index.jsx","/Users/zechen/Desktop/manage/page/userList.jsx"]
+export var router = ["/Users/zechen/Desktop/manage/page/importDemo2/importDemo2.jsx","/Users/zechen/Desktop/manage/page/index.jsx","/Users/zechen/Desktop/manage/page/userList.jsx"]

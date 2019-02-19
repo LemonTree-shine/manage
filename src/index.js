@@ -48,7 +48,10 @@ reactDOM.render(
 	<HashRouter>
 		<IndexPage/>
 	</HashRouter>,
-	document.getElementById('contain')
+	document.getElementById('contain'),
+	()=>{
+		//console.log(123);
+	}
 );
 
 

@@ -23,6 +23,7 @@ class ProviderCom extends Component{
     render(){
         return <ContextTheme.Provider value={this.state}>
             {this.props.children}
+            <Test222 ref={(el)=>{this.aaa=el}}/>
         </ContextTheme.Provider>
     }
     state = {
@@ -32,7 +33,20 @@ class ProviderCom extends Component{
         }
     };
 
+    componentDidMount(){
+        console.log(this.aaa);
+    }
+
 }
+
+class Test222 extends Component{
+    render(){
+        return <div>
+            <div>chenze</div>
+        </div>
+    }
+}
+
 
 
 class Test extends Component{

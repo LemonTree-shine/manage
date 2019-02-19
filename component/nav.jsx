@@ -85,7 +85,7 @@ export default class Nav extends Component {
 
     //切换页面的情况
     changePage = (e) => {
-        console.log(e.target);
+        //console.log(e.target);
         var target = e.target ? e.target : e;
         var navmenuSelect = this.menuUl.querySelectorAll(".c-navmenu-selected");
         navmenuSelect.forEach(elem => {
@@ -157,7 +157,7 @@ function findParent(elem, _this) {
 
 //默认展开选中的菜单
 function initExpand(elem, _this) {
-    console.log(elem);
+    //console.log(elem);
     if (!elem) {
         return;
     }
